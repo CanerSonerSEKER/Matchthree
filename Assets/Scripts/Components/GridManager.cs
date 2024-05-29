@@ -2,15 +2,15 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Components
 {
-    public class GridManager : MonoBehaviour
+    public class GridManager : SerializedMonoBehaviour
     {
-        [BoxGroup(Order = 999)][TableMatrix(SquareCells = true)/*(DrawElementMethod = nameof(DrawFile))*/, OdinSerialize] private Tile[,] _grid;
-
+        [BoxGroup(Order = 999)][TableMatrix(SquareCells = true)/*(DrawElementMethod = nameof(DrawFile))*/, OdinSerialize] 
+        private Tile[,] _grid;
         [SerializeField] private List<GameObject> _tilePrefabs;
+
         private int _gridSizeY;
         private int _gridSizeX;
 
@@ -36,7 +36,7 @@ namespace Components
             }
 
             _grid = new Tile[_gridSizeX, _gridSizeY];
-
+            
             for(int x = 0; x < _gridSizeX; x ++) 
             for(int y = 0; y < _gridSizeY; y ++)
             {
