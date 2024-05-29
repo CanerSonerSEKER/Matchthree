@@ -37,7 +37,7 @@ namespace Components
 
             _grid = new Tile[_gridSizeX, _gridSizeY];
 
-            for(int x = 0; x < _gridSizeX; x ++)
+            for(int x = 0; x < _gridSizeX; x ++) 
             for(int y = 0; y < _gridSizeY; y ++)
             {
                 Vector2Int coord = new(x, _gridSizeY - y - 1);
@@ -52,12 +52,6 @@ namespace Components
                 tile.Construct(coord);
                 _grid[x, y] = tile;
             }
-            
-
         }
-        
     }
-    
-    
-    
 }

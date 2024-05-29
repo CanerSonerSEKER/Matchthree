@@ -261,7 +261,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47905f2d6b0243aa8ad847a9d3a3f394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tilePrefabs: []
+  _tilePrefabs:
+  - {fileID: 1232034834702080915, guid: 562bdff63e1fac54aaaa38c0effbf5a1, type: 3}
+  - {fileID: 8747565746036203011, guid: 5e4e42623541d7948b9910c08bd2f879, type: 3}
+  - {fileID: 6444377936590490650, guid: 7e6a78b9f557a0f46b6fd41eafc0292a, type: 3}
+  - {fileID: 1179461995043267006, guid: 37020fed2b06fbe41be490b1ea5a3011, type: 3}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +352,7 @@ Transform:
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 4.01, y: 2.97, z: -15.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
