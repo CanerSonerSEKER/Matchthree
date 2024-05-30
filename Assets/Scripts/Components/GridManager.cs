@@ -41,7 +41,7 @@ namespace Components
             for(int y = 0; y < _gridSizeY; y ++)
             {
                 Vector2Int coord = new(x, _gridSizeY - y - 1);
-                Vector3 pos = new(coord.x, coord.y, 0f);
+                Vector3 pos = new(coord.x, coord.y, 0f); 
                 
                 int randomIndex = Random.Range(0, _tilePrefabs.Count);
                 

@@ -144,4 +144,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coords: {x: 0, y: 0}
-  _colorID: 0
+  _id: -1
