@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Events;
 using Extensions.System;
 using Extensions.Unity;
@@ -10,105 +11,116 @@ using Zenject;
 
 namespace Components
 {
-    public class GridManager : SerializedMonoBehaviour
+    public partial class GridManager : SerializedMonoBehaviour
     {
         [Inject] private InputEvents InputEvents { get; set; }
-        [BoxGroup(Order = 999)][TableMatrix(SquareCells = true)/*(DrawElementMethod = nameof(DrawFile))*/, OdinSerialize] 
-        private Tile[,] _grid;
+        [Inject] private GridEvents GridEvents { get; set; }
+        
+        [BoxGroup(Order = 999),TableMatrix(SquareCells = true, DrawElementMethod = nameof(DrawFile)),OdinSerialize] private Tile[,] _grid;
         [SerializeField] private List<GameObject> _tilePrefabs;
 
         private int _gridSizeY;
         private int _gridSizeX;
         [SerializeField] private List<int> _prefabsIds;
+        [SerializeField] private Bounds _gridBounds;
 
         private Tile _selectedTile;
         private Vector3 _mouseDownPos;
         private Vector3 _mouseUpPos;
 
+        private List<Tile> _currMatchesDebug;
+
+        
         private void OnEnable()
         {
             RegisterEvents();
+            
+        }
+
+        private void Start()
+        {
+            GridEvents.GridLoaded?.Invoke(_gridBounds);
         }
 
         private void OnDisable()
         {
             UnRegisterEvents();
         }
-
-        public Tile DrawFile(Rect rect, Tile tile)
-        {
-            UnityEditor.EditorGUI.DrawRect(rect, Color.blue);
-
-            return tile;
-        }
         
-        
-        [Button]
-        private void CreateGrid(int sizeX, int sizeY)
-        {
-            _prefabsIds = new();
-            
-            for (int id = 0; id < _tilePrefabs.Count; id++)
-            {
-                _prefabsIds.Add(id);
-            }
-            
-            _gridSizeX = sizeX;
-            _gridSizeY = sizeY;
-            
-            if (_grid != null)
-            {
-                foreach (Tile o in _grid)
-                {
-                    DestroyImmediate(o.gameObject);
-                }
-            }
-
-            _grid = new Tile[_gridSizeX, _gridSizeY];
-            
-            for(int x = 0; x < _gridSizeX; x ++) 
-            for(int y = 0; y < _gridSizeY; y ++)
-            {
-                List<int> spawnableIds = new(_prefabsIds);
-                
-                Vector2Int coord = new(x, _gridSizeY - y - 1); // Invert Y axis 
-                Vector3 pos = new(coord.x, coord.y, 0f);
-
-                _grid.GetSpawnableColors(coord, spawnableIds);
-                
-                int randomId = spawnableIds.Random();
-                
-                GameObject tilePrefabRandom = _tilePrefabs[randomId]; 
-                GameObject tileNew = Instantiate(tilePrefabRandom, pos, Quaternion.identity); // Instantiate rand prefab
-                
-                Tile tile = tileNew.GetComponent<Tile>();
-                tile.Construct(coord);
-                
-                _grid[coord.x, coord.y] = tile; //  Be carefull assigning to tile inversed y coordinates!!
-            }
-        }
         private void RegisterEvents()
         {
             InputEvents.MouseDownGrid += OnMouseDownGrid;
             InputEvents.MouseUpGrid += OnMouseUpGrid;
         }
 
-        private void OnMouseDownGrid(Tile arg0, Vector3 arg1)
+        private void OnMouseDownGrid(Tile clickedTile, Vector3 dirVector)
         {
-            _selectedTile = arg0;
-            _mouseDownPos = arg1;
-            EDebug.Method();
+            _selectedTile = clickedTile;
+            _mouseDownPos = dirVector;
+
+
         }
+
+        private bool CanMove(Tile clickedTile, Vector3 inputVect, out List<Tile> matches)
+        {
+            matches = new List<Tile>();
+            
+            Vector2Int tileMoveCoord = clickedTile.Coords + GridF.GetGridDirVector(inputVect);
+                
+            if (_grid.IsInsideGrid(tileMoveCoord) == false) return false;
+
+            return hasMatch(clickedTile, tileMoveCoord, out matches);
+        }
+
+        private bool hasMatch(Tile fromTile, Vector2Int tileMoveCoord, out List<Tile> matches)
+        {
+            bool hasMatches = false;
+                
+            Tile toTile =  _grid.Get(tileMoveCoord);
+            
+            _grid.Switch(fromTile, toTile);
+
+            matches = _grid.GetMatchesY(toTile);
+            matches.AddRange(_grid.GetMatchesX(toTile)); 
+            matches.AddRange(_grid.GetMatchesY(fromTile)); 
+            matches.AddRange(_grid.GetMatchesX(fromTile));
+
+            if (matches.Count > 2 )
+            {
+                hasMatches = true;
+            }
+            
+            _grid.Switch(toTile, fromTile);
+            
+            return hasMatches;
+        }
+
+        [Button]
+        private void TestGridDir(Vector2 input )
+        {
+           Debug.LogWarning( GridF.GetGridDir(input));
+        } 
+        
         private void OnMouseUpGrid(Vector3 arg0)
         {
             _mouseUpPos = arg0;
+
+            Vector3 dirVector = arg0 - _mouseDownPos; 
+            
             if (_selectedTile)
             {
-                EDebug.Method();
+                bool canMove = CanMove(_selectedTile, dirVector, out List<Tile> matches);
+                Debug.LogWarning($"{canMove} canMove, {matches.Count} matches.Count ");                
+                if (! canMove) return;
+
+                matches.Select(e => e.GetComponent<SpriteRenderer>().color = Color.black);
+
+                _currMatchesDebug = matches;
                 
                 Debug.DrawLine(_mouseDownPos, _mouseUpPos, Color.blue, 2f);
             }
         }
+
 
         private void UnRegisterEvents()
         {
@@ -117,3 +129,4 @@ namespace Components
         }
     }
 }
+

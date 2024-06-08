@@ -16,5 +16,16 @@ namespace Extensions.System
         {
             return Mathf.RoundToInt(thisFloat);
         }
+
+        public static float Sign(this float thisFloat)
+        {
+            return Mathf.Sign(thisFloat);
+        }
+        
+        public static float Abs(this float thisFloat)
+        {
+            return Mathf.Abs(thisFloat);
+        }
+
     }
 }

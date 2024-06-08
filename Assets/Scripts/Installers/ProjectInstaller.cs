@@ -9,6 +9,7 @@ namespace Installers
     {
         private ProjectEvents _projectEvents;
         private InputEvents _inputEvents;
+        private GridEvents _gridBounds;
 
         public override void InstallBindings()
         {
@@ -16,6 +17,8 @@ namespace Installers
             Container.BindInstance(_projectEvents).AsSingle();
             _inputEvents = new InputEvents();
             Container.BindInstance(_inputEvents).AsSingle();
+            _gridBounds = new GridEvents();
+            Container.BindInstance(_gridBounds).AsSingle();
         }
 
         private void Awake()
