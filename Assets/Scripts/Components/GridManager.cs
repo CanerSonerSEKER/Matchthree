@@ -1,20 +1,25 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Events;
+using Extensions.DoTween;
 using Extensions.System;
 using Extensions.Unity;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
+using Sirenix.Utilities;
 using UnityEngine;
+using UnityEngine.Events;
 using Zenject;
 
 namespace Components
 {
-    public partial class GridManager : SerializedMonoBehaviour
+    public partial class GridManager : SerializedMonoBehaviour, ITweenContainerBind
     {
         [Inject] private InputEvents InputEvents { get; set; }
         [Inject] private GridEvents GridEvents { get; set; }
+        public ITweenContainer TweenContainer { get; set; }
         
         [BoxGroup(Order = 999),TableMatrix(SquareCells = true, DrawElementMethod = nameof(DrawFile)),OdinSerialize] private Tile[,] _grid;
         [SerializeField] private List<GameObject> _tilePrefabs;
@@ -30,11 +35,15 @@ namespace Components
 
         private List<Tile> _currMatchesDebug;
 
-        
+
+        private void Awake()
+        {
+            TweenContainer = TweenContain.Install(this);
+        }
+
         private void OnEnable()
         {
             RegisterEvents();
-            
         }
 
         private void Start()
@@ -45,6 +54,7 @@ namespace Components
         private void OnDisable()
         {
             UnRegisterEvents();
+            TweenContainer.Clear();
         }
         
         private void RegisterEvents()
@@ -61,24 +71,17 @@ namespace Components
 
         }
 
-        private bool CanMove(Tile clickedTile, Vector3 inputVect, out List<Tile> matches)
+        private bool CanMove
+        (  
+        Vector2Int tileMoveCoord
+        )
         {
-            matches = new List<Tile>();
-            
-            Vector2Int tileMoveCoord = clickedTile.Coords + GridF.GetGridDirVector(inputVect);
-                
-            if (_grid.IsInsideGrid(tileMoveCoord) == false) return false;
-
-            return hasMatch(clickedTile, tileMoveCoord, out matches);
+            return _grid.IsInsideGrid(tileMoveCoord);
         }
 
-        private bool hasMatch(Tile fromTile, Vector2Int tileMoveCoord, out List<Tile> matches)
+        private bool HasMatch(Tile fromTile, Tile toTile,  out List<Tile> matches)
         {
             bool hasMatches = false;
-                
-            Tile toTile =  _grid.Get(tileMoveCoord);
-            
-            _grid.Switch(fromTile, toTile);
 
             matches = _grid.GetMatchesY(toTile);
             matches.AddRange(_grid.GetMatchesX(toTile)); 
@@ -90,8 +93,6 @@ namespace Components
                 hasMatches = true;
             }
             
-            _grid.Switch(toTile, fromTile);
-            
             return hasMatches;
         }
 
@@ -101,20 +102,39 @@ namespace Components
            Debug.LogWarning( GridF.GetGridDir(input));
         } 
         
-        private void OnMouseUpGrid(Vector3 arg0)
+        private void OnMouseUpGrid(Vector3 mouseUpPos)
         {
-            _mouseUpPos = arg0;
+            _mouseUpPos = mouseUpPos;
 
-            Vector3 dirVector = arg0 - _mouseDownPos; 
+            Vector3 dirVector = mouseUpPos - _mouseDownPos; 
             
             if (_selectedTile)
             {
-                bool canMove = CanMove(_selectedTile, dirVector, out List<Tile> matches);
-                Debug.LogWarning($"{canMove} canMove, {matches.Count} matches.Count ");                
-                if (! canMove) return;
+               Vector2Int tileMoveCoord = _selectedTile.Coords + GridF.GetGridDirVector(dirVector);     
+                    
+                if (! CanMove(tileMoveCoord)) return;
+                
+                Tile toTile = _grid.Get(tileMoveCoord);
+                
+                _grid.Swap(_selectedTile, toTile);
 
-                matches.Select(e => e.GetComponent<SpriteRenderer>().color = Color.black);
-
+                if (!HasMatch(_selectedTile, toTile, out List<Tile> matches))
+                {
+                    _grid.Swap(toTile, _selectedTile);
+                    return;
+                }
+                
+                DoTileMoveAnim
+                (
+                    _selectedTile, 
+                    toTile,
+                    delegate
+                    {
+                        matches.DoToAll(e => e.gameObject.Destroy());
+                    }
+                    
+                );
+                                
                 _currMatchesDebug = matches;
                 
                 Debug.DrawLine(_mouseDownPos, _mouseUpPos, Color.blue, 2f);
@@ -122,11 +142,31 @@ namespace Components
         }
 
 
+        private void  DoTileMoveAnim(Tile fromTile, Tile toTile, TweenCallback onComplete)
+        {
+            TweenContainer.AddSequence = DOTween.Sequence();
+            Vector3 fromTileWorldPos = CoordsToWorld(fromTile.Coords);
+            TweenContainer.AddedSeq.Append(fromTile.transform.DOMove(fromTileWorldPos, 1f));
+
+            Vector3 toTileWorldPos = CoordsToWorld(toTile.Coords);
+            TweenContainer.AddedSeq.Join(toTile.transform.DOMove(toTileWorldPos, 1f));
+            
+             TweenContainer.AddedSeq.onComplete += onComplete;
+        }
+        
+        public Vector3 CoordsToWorld(Vector2Int coords)
+        {
+            Vector3 localPos = coords.ToVector3XY();
+
+            return transform.position + localPos;
+        }
+        
         private void UnRegisterEvents()
         {
             InputEvents.MouseDownGrid -= OnMouseDownGrid;
             InputEvents.MouseUpGrid -= OnMouseUpGrid;
         }
+
     }
 }
 

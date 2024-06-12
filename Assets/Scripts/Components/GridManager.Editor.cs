@@ -16,6 +16,9 @@ namespace Components
 #if UNITY_EDITOR
         public Tile DrawFile(Rect rect, Tile tile)
         {
+
+            if (tile == false) return tile;
+            
             Texture2D preview = AssetPreview.GetAssetPreview(tile.gameObject);
             
             rect =  rect.Padding(3);
@@ -35,7 +38,8 @@ namespace Components
             
             foreach (Tile tile in _currMatchesDebug)
             {
-                Gizmos.DrawWireCube(tile.transform.position, Vector3.one);    
+                if (!tile) continue;
+                Gizmos.DrawWireCube(tile.transform.position, Vector3.one);
             }
         }
 

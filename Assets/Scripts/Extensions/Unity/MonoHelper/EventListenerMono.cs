@@ -17,4 +17,4 @@ namespace Extensions.Unity.MonoHelper
         protected abstract void RegisterEvents();
         protected abstract void UnRegisterEvents();
     }
-}
+} 
