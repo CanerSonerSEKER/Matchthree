@@ -3361,6 +3361,7 @@ MonoBehaviour:
   _gridBounds:
     m_Center: {x: 3.5, y: 3.5000002, z: 0}
     m_Extent: {x: 4, y: 3.9850302, z: 0.1}
+  _transform: {fileID: 918791525}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

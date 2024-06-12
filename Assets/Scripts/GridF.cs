@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Components;
 using Extensions.System;
+using Extensions.Unity;
 using OpenCover.Framework.Model;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
@@ -290,7 +291,13 @@ public static class GridF
         thisGrid.Set(fromTile, toCoords);
         thisGrid.Set(toTile, fromCoords);
     }
+    
+    public static Vector3 CoordsToWorld(this Tile[,] thisGrid, Transform transform, Vector2Int coords)
+    {
+        Vector3 localPos = coords.ToVector3XY();
 
+        return transform.position + localPos;
+    }
     
 }
 
