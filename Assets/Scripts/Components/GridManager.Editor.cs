@@ -1,44 +1,41 @@
-using System;
-using System.Collections.Generic;
+﻿﻿using System.Collections.Generic;
 using Extensions.System;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 #if UNITY_EDITOR
 using UnityEditor;
-#endif 
+#endif
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Components
 {
-    public partial class GridManager 
+    public partial class GridManager
     {
 #if UNITY_EDITOR
-        public Tile DrawFile(Rect rect, Tile tile)
+        private Tile DrawTile(Rect rect, Tile tile)
         {
-
-            if (tile == false) return tile;
+            if(tile == false) return tile;
             
             Texture2D preview = AssetPreview.GetAssetPreview(tile.gameObject);
             
-            rect =  rect.Padding(3);
-            UnityEditor.EditorGUI.DrawPreviewTexture(rect, preview);
-
+            rect = rect.Padding(3);
+            EditorGUI.DrawPreviewTexture(rect, preview);
+            
             return tile;
         }
 
         private void OnDrawGizmos()
         {
-            if (_currMatchesDebug == null) return;
+            if(_currMatchesDebug == null) return;
 
-            if (_currMatchesDebug.Count == 0) return;
-            
+            if(_currMatchesDebug.Count == 0) return;
             
             Gizmos.color = Color.blue;
             
-            foreach (Tile tile in _currMatchesDebug)
+            foreach(Tile tile in _currMatchesDebug)
             {
-                if (!tile) continue;
+                if(! tile) continue;
+
                 Gizmos.DrawWireCube(tile.transform.position, Vector3.one);
             }
         }
@@ -47,60 +44,55 @@ namespace Components
         private void CalculateBounds()
         {
             _gridBounds = new Bounds();
-
-            foreach (Tile tile in _grid)
+            
+            foreach(Tile tile in _grid)
             {
-                Bounds spriteBounds = tile.GetComponent<SpriteRenderer>().bounds;
-                _gridBounds.Encapsulate(spriteBounds);
+                 Bounds spriteBounds = tile.GetComponent<SpriteRenderer>().bounds;
+                 _gridBounds.Encapsulate(spriteBounds);
             }
         }
-        
+
         [Button]
         private void CreateGrid(int sizeX, int sizeY)
         {
-            _prefabsIds = new();
-            
-            for (int id = 0; id < _tilePrefabs.Count; id++)
-            {
-                _prefabsIds.Add(id);
-            }
+            _prefabIds = new List<int>();
+
+            for(int id = 0; id < _tilePrefabs.Count; id ++) _prefabIds.Add(id);
             
             _gridSizeX = sizeX;
             _gridSizeY = sizeY;
             
-            if (_grid != null)
+            if(_grid != null)
             {
-                foreach (Tile o in _grid)
+                foreach(Tile o in _grid)
                 {
                     DestroyImmediate(o.gameObject);
                 }
             }
 
             _grid = new Tile[_gridSizeX, _gridSizeY];
-            
-            for(int x = 0; x < _gridSizeX; x ++) 
+
+            for(int x = 0; x < _gridSizeX; x ++)
             for(int y = 0; y < _gridSizeY; y ++)
             {
-                List<int> spawnableIds = new(_prefabsIds);
-                
-                Vector2Int coord = new(x, _gridSizeY - y - 1); // Invert Y axis 
+                List<int> spawnableIds = new(_prefabIds);
+                Vector2Int coord = new(x, _gridSizeY - y - 1); //Invert Y Axis
                 Vector3 pos = new(coord.x, coord.y, 0f);
 
                 _grid.GetSpawnableColors(coord, spawnableIds);
                 
                 int randomId = spawnableIds.Random();
                 
-                GameObject tilePrefabRandom = _tilePrefabs[randomId]; 
-                GameObject tileNew = PrefabUtility.InstantiatePrefab(tilePrefabRandom, transform) as GameObject;  // Instantiate rand prefab
-
+                GameObject tilePrefabRandom = _tilePrefabs[randomId];
+                GameObject tileNew = PrefabUtility.InstantiatePrefab(tilePrefabRandom, transform) as GameObject; //Instantiate rand prefab
                 tileNew.transform.position = pos;
                 
                 Tile tile = tileNew.GetComponent<Tile>();
                 tile.Construct(coord);
                 
-                _grid[coord.x, coord.y] = tile; //  Be carefull assigning to tile inversed y coordinates!!
+                _grid[coord.x, coord.y] = tile;// Becarefull while assigning tile to inversed y coordinates!
             }
-
+            
             CalculateBounds();
         }
 #endif

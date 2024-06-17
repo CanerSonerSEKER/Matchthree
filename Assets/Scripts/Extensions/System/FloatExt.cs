@@ -26,6 +26,5 @@ namespace Extensions.System
         {
             return Mathf.Abs(thisFloat);
         }
-
     }
 }

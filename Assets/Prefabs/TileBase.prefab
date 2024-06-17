@@ -99,8 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e1c98977da6407a82bbd4bc82668d04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coords: {x: 0, y: 0}
   _id: -1
+  _coords: {x: 0, y: 0}
+  _spriteRenderer: {fileID: 2730388744055904151}
+  _transform: {fileID: 702532642258665006}
 --- !u!65 &170040768605847152
 BoxCollider:
   m_ObjectHideFlags: 0
