@@ -57,9 +57,10 @@ namespace Extensions.Unity
                     // thisPoolObjData.IsActive = false;
                     // _myPool[i] = thisPoolObjData;
                     ActiveCount--;
-                    break;
+                    return;
                 }
             }
+            Debug.LogWarning($"{poolObj.transform.name} is not in this pool!");
         }
 
         public void DeSpawn(int i)

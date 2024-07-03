@@ -20,17 +20,21 @@ PrefabInstance:
       propertyPath: _colorID
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2572854240763759012, guid: 5e4e42623541d7948b9910c08bd2f879, type: 3}
+      propertyPath: _coords.y
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4518208284208198174, guid: 5e4e42623541d7948b9910c08bd2f879, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.13334346
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4518208284208198174, guid: 5e4e42623541d7948b9910c08bd2f879, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.7538066
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4518208284208198174, guid: 5e4e42623541d7948b9910c08bd2f879, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3943187
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4518208284208198174, guid: 5e4e42623541d7948b9910c08bd2f879, type: 3}
       propertyPath: m_LocalRotation.w
