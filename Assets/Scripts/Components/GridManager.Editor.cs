@@ -33,10 +33,10 @@ namespace Components
             
             Gizmos.color = Color.blue;
             
-            foreach(Tile tile in _lastMatches)
+            foreach(Tile tile in _lastMatches.SelectMany(e => e))
             {
                 if(! tile) continue;
-
+            
                 Gizmos.DrawWireCube(tile.transform.position, Vector3.one);
             }
         }
