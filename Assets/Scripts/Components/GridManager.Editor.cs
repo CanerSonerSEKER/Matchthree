@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Extensions.System;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
@@ -23,7 +24,7 @@ namespace Components
             
             return tile;
         }
-
+        
         private void OnDrawGizmos()
         {
             if(_lastMatches == null) return;
@@ -93,7 +94,29 @@ namespace Components
                 _grid[coord.x, coord.y] = tile;// Becarefull while assigning tile to inversed y coordinates!
             }
             
+            GenerateTileBG();
             CalculateBounds();
+        }
+
+        [Button]
+        private void GenerateTileBG()
+        {
+            _tileBGs.DoToAll(DestroyImmediate);
+            
+            foreach (Tile tile in _grid)
+            {
+                Vector3 tileWorldPos = tile.transform.position;
+
+                GameObject tileBg = Instantiate
+                (
+                    _tileBGPrefab, 
+                    tileWorldPos, 
+                    Quaternion.identity, 
+                    _bGTrans
+                );
+
+                _tileBGs.Add(tileBg);
+            }
         }
 #endif
     }

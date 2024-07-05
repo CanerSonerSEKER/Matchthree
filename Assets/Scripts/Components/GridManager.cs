@@ -8,6 +8,7 @@ using Extensions.Unity;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 
 namespace Components
@@ -26,6 +27,9 @@ namespace Components
         [SerializeField] private List<int> _prefabIds;
         [SerializeField] private Bounds _gridBounds;
         [SerializeField] private Transform _transform;
+        [SerializeField] private List<GameObject> _tileBGs = new();
+        [SerializeField] private GameObject _tileBGPrefab;
+        [SerializeField] private Transform _bGTrans;
         private Tile _selectedTile;
         private Vector3 _mouseDownPos;
         private Vector3 _mouseUpPos;
@@ -218,7 +222,7 @@ namespace Components
             Debug.LogWarning($"isGameOver: {isGameOver}, hintTile {hintTile}, hintDir {hintDir}", hintTile);
         }
 
-        private void RainDownTiles()
+        private void SpawnAndAllocateTiles()
         {
             _tilesToMove = new Tile[_gridSizeX,_gridSizeY];
 
@@ -328,7 +332,7 @@ namespace Components
                     if(HasAnyMatches(out _lastMatches))
                     {
                         _lastMatches.DoToAll(DespawnTile);
-                        RainDownTiles();
+                        SpawnAndAllocateTiles();
                     }
                     else
                     {
@@ -427,7 +431,7 @@ namespace Components
                     {
                         _lastMatches.DoToAll(DespawnTile);
 
-                        RainDownTiles();
+                        SpawnAndAllocateTiles();
                     }
                 );
             }
