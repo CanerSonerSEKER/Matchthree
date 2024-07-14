@@ -14,8 +14,9 @@ namespace Components
         [SerializeField] private int _id;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Transform _transform;
-        public MonoPool MyPool{get;set;}
-        public ITweenContainer TweenContainer{get;set;}
+        public MonoPool MyPool { get; set; }
+        public ITweenContainer TweenContainer { get; set; }
+        public bool ToBeDestroy { get; set; }
 
         private void Awake()
         {
@@ -27,7 +28,9 @@ namespace Components
             TweenContainer.Clear();
         }
 
-        private void OnMouseDown() {}
+        private void OnMouseDown()
+        {
+        }
 
         void ITileGrid.SetCoord(Vector2Int coord)
         {
@@ -39,17 +42,24 @@ namespace Components
             _coords = new Vector2Int(x, y);
         }
 
-        public void AfterCreate() {}
+        public void AfterCreate()
+        {
+        }
 
         public void BeforeDeSpawn()
         {
         }
 
-        public void TweenDelayedDeSpawn(Func<bool> onComplete) {}
+        public void TweenDelayedDeSpawn(Func<bool> onComplete)
+        {
+        }
 
         public void AfterSpawn()
         {
+            ToBeDestroy = false;
+
             //RESET METHOD (Resurrect)
+
         }
 
         public void Teleport(Vector3 worldPos)
@@ -57,7 +67,10 @@ namespace Components
             _transform.position = worldPos;
         }
 
-        public void Construct(Vector2Int coords) {_coords = coords;}
+        public void Construct(Vector2Int coords)
+        {
+            _coords = coords;
+        }
 
         public Tween DoMove(Vector3 worldPos, TweenCallback onComplete = null)
         {
@@ -70,10 +83,10 @@ namespace Components
 
         public Sequence DoHint(Vector3 worldPos, TweenCallback onComplete = null)
         {
-            Vector3 lastPos = _transform.position;            
-            
+            Vector3 lastPos = _transform.position;
+
             TweenContainer.AddSequence = DOTween.Sequence();
-            
+
             TweenContainer.AddedSeq.Append(_transform.DOMove(worldPos, 1f));
             TweenContainer.AddedSeq.Append(_transform.DOMove(lastPos, 1f));
 
