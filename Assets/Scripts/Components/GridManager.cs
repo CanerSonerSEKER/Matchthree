@@ -33,8 +33,18 @@ namespace Components
         [SerializeField] private Bounds _gridBounds;
         [SerializeField] private Transform _transform;
         [SerializeField] private List<GameObject> _tileBGs = new();
+        [SerializeField] private List<GameObject> _gridBorders = new();
         [SerializeField] private GameObject _tileBGPrefab;
         [SerializeField] private Transform _bGTrans;
+        [SerializeField] private GameObject _borderTopLeft; 
+        [SerializeField] private GameObject _borderTopRight; 
+        [SerializeField] private GameObject _borderBotLeft; 
+        [SerializeField] private GameObject _borderBotRight; 
+        [SerializeField] private GameObject _borderLeft; 
+        [SerializeField] private GameObject _borderRight; 
+        [SerializeField] private GameObject _borderTop; 
+        [SerializeField] private GameObject _borderBot;
+        [SerializeField] private Transform _borderTrans;
         private Tile _selectedTile;
         private Vector3 _mouseDownPos;
         private Vector3 _mouseUpPos;
@@ -50,7 +60,7 @@ namespace Components
         private GridDir _hintDir;
         private Sequence _hintTween;
         private Coroutine _destroyRoutine;
-
+        private Coroutine _hintRoutine; 
         private void Awake()
         {
             _tilePoolsByPrefabID = new List<MonoPool>();
@@ -69,9 +79,10 @@ namespace Components
                 
                 _tilePoolsByPrefabID.Add(tilePool);
             }
-
+            
             TweenContainer = TweenContain.Install(this);
         }
+
 
         private void Start()
         {
@@ -393,16 +404,16 @@ namespace Components
         
         private IEnumerator DestroyRoutine()
         {
+            int groupCount = _lastMatches.Count;
+            
             foreach (List<Tile> matches in _lastMatches)
             {
-                int groupCount = matches.Count;
-                
                 matches.DoToAll(DespawnTile);
                 
-                GridEvents.MatchGroupDespawn?.Invoke(groupCount);
-
                 yield return new WaitForSeconds(0.1f);
             }
+            
+            GridEvents.MatchGroupDespawn?.Invoke(groupCount);
             
             SpawnAndAllocateTiles();
         }
@@ -421,6 +432,37 @@ namespace Components
             toTile.DoMove(toTileWorldPos, onComplete);
         }
 
+        private void StartHintRoutine()
+        {
+            if (_hintRoutine != null)
+            {
+                StopCoroutine(_hintRoutine);
+            }
+
+            _hintRoutine = StartCoroutine(HintRoutineUpdate());
+        }
+        
+        private void StopHintRoutine()
+        {
+            if (_hintRoutine != null)
+            {
+                StopCoroutine(_hintRoutine);
+                _hintRoutine = null;
+            }
+
+            _hintRoutine = StartCoroutine(HintRoutineUpdate());
+        }
+
+        private IEnumerator HintRoutineUpdate()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(3f);
+                TryShowHint();            
+            }
+            
+        }
+        
         private void TryShowHint()
         {
             if(_hintTile)
@@ -438,11 +480,17 @@ namespace Components
             InputEvents.MouseDownGrid += OnMouseDownGrid;
             InputEvents.MouseUpGrid += OnMouseUpGrid;
             GridEvents.InputStart += OnInputStart;
+            GridEvents.InputStop += OnInputStop;
+        }
+
+        private void OnInputStop()
+        {
+            StopHintRoutine();
         }
 
         private void OnInputStart()
         {
-            this.WaitFor(new WaitForSeconds(1f), TryShowHint);
+            StartHintRoutine();
         }
 
         private void OnMouseDownGrid(Tile clickedTile, Vector3 dirVector)
@@ -507,6 +555,7 @@ namespace Components
             InputEvents.MouseDownGrid -= OnMouseDownGrid;
             InputEvents.MouseUpGrid -= OnMouseUpGrid;
             GridEvents.InputStart -= OnInputStart;
+            GridEvents.InputStop -= OnInputStop;
         }
     }
 }
