@@ -8,9 +8,7 @@ using Extensions.System;
 using Extensions.Unity;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 using Sequence = DG.Tweening.Sequence;
 
@@ -55,12 +53,13 @@ namespace Components
         private MonoPool _tilePool2;
         private MonoPool _tilePool3;
         private Tile[,] _tilesToMove;
-        private List<List<Tile>> _lastMatches;
+        [SerializeField] private List<List<Tile>> _lastMatches;
         private Tile _hintTile;
         private GridDir _hintDir;
         private Sequence _hintTween;
         private Coroutine _destroyRoutine;
-        private Coroutine _hintRoutine; 
+        private Coroutine _hintRoutine;
+        [SerializeField] private int _scoreMulti;
         private void Awake()
         {
             _tilePoolsByPrefabID = new List<MonoPool>();
@@ -141,7 +140,7 @@ namespace Components
             matches = new List<List<Tile>>();
             
             foreach(Tile tile in _grid)
-            {
+            { 
                 List<Tile> matchesAll = _grid.GetMatchesXAll(tile);
                 matchesAll.AddRange(_grid.GetMatchesYAll(tile));
 
@@ -157,18 +156,12 @@ namespace Components
             for (int i = 0; i < matches.Count; i++)
             {
                 List<Tile> match = matches[i];
-                match = match.Where(e => e.ToBeDestroy == false).ToList();
+                
+                matches[i] = match.Where(e => e.ToBeDestroy == false).DoToAll(e => e.ToBeDestroy = true).ToList();
 
-                if (match.Count > 2)
-                {
-                    matches[i] = match;
-                    match.DoToAll(e => e.ToBeDestroy = true);
-                }
-                else
-                {
-                    matches.Remove(match); 
-                }
             }
+
+            matches = matches.Where(e => e.Count > 2).ToList();
 
             return matches.Count > 0;
         }
@@ -408,12 +401,15 @@ namespace Components
             
             foreach (List<Tile> matches in _lastMatches)
             {
+                IntScoreMulti();
                 matches.DoToAll(DespawnTile);
+                
+                // TODO: Show scoreMulti text in UI as PunchScale 
+                
+                GridEvents.MatchGroupDespawn?.Invoke(matches.Count * _scoreMulti);
                 
                 yield return new WaitForSeconds(0.1f);
             }
-            
-            GridEvents.MatchGroupDespawn?.Invoke(groupCount);
             
             SpawnAndAllocateTiles();
         }
@@ -444,6 +440,11 @@ namespace Components
         
         private void StopHintRoutine()
         {
+            if (_hintTile)
+            {
+                _hintTile.Teleport(_grid.CoordsToWorld(_transform, _hintTile.Coords ));
+            }
+            
             if (_hintRoutine != null)
             {
                 StopCoroutine(_hintRoutine);
@@ -457,7 +458,7 @@ namespace Components
         {
             while (true)
             {
-                yield return new WaitForSeconds(3f);
+                yield return new WaitForSeconds(3f); 
                 TryShowHint();            
             }
             
@@ -491,6 +492,14 @@ namespace Components
         private void OnInputStart()
         {
             StartHintRoutine();
+            ResetScoreMulti();
+        }
+
+        private void ResetScoreMulti() {_scoreMulti = 0;}
+
+        private void IntScoreMulti()
+        {
+            _scoreMulti ++;
         }
 
         private void OnMouseDownGrid(Tile clickedTile, Vector3 dirVector)
