@@ -4,6 +4,7 @@ using Extensions.System;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 #if UNITY_EDITOR
+using Settings;
 using UnityEditor;
 #endif
 using UnityEngine;
@@ -74,9 +75,7 @@ namespace Components
         [Button]
         private void CreateGrid(int sizeX, int sizeY)
         {
-            _prefabIds = new List<int>();
-
-            for(int id = 0; id < _tilePrefabs.Count; id ++) _prefabIds.Add(id);
+            LoadSettings();
             
             _gridSizeX = sizeX;
             _gridSizeY = sizeY;
@@ -94,7 +93,7 @@ namespace Components
             for(int x = 0; x < _gridSizeX; x ++)
             for(int y = 0; y < _gridSizeY; y ++)
             {
-                List<int> spawnableIds = new(_prefabIds);
+                List<int> spawnableIds = new(_mySettings.PrefabIDs);
                 Vector2Int coord = new(x, _gridSizeY - y - 1); //Invert Y Axis
                 Vector3 pos = new(coord.x, coord.y, 0f);
 
@@ -102,7 +101,7 @@ namespace Components
                 
                 int randomId = spawnableIds.Random();
                 
-                GameObject tilePrefabRandom = _tilePrefabs[randomId];
+                GameObject tilePrefabRandom = _mySettings.TilePrefabs[randomId];
                 GameObject tileNew = PrefabUtility.InstantiatePrefab(tilePrefabRandom, transform) as GameObject; //Instantiate rand prefab
                 tileNew.transform.position = pos;
                 
@@ -120,6 +119,8 @@ namespace Components
         [Button]
         private void GenerateTileBG()
         {
+            LoadSettings();
+            
             _tileBGs.DoToAll(DestroyImmediate);
             _tileBGs = new List<GameObject>();
             
@@ -129,7 +130,7 @@ namespace Components
 
                 GameObject tileBg = PrefabUtility.InstantiatePrefab
                 (
-                    _tileBGPrefab, 
+                    _mySettings.TileBGPrefab, 
                     _bGTrans
                 ) as GameObject;
 
@@ -142,33 +143,35 @@ namespace Components
         [Button]
         private void GenerateBorders()
         {
+            LoadSettings();
+            
             _gridBorders.DoToAll(DestroyImmediate);
             _gridBorders = new List<GameObject>();
 
             Tile botLeftCorner = _grid[0,0];
-            InstantiateBorder(botLeftCorner.transform.position, _borderBotLeft);
+            InstantiateBorder(botLeftCorner.transform.position, _mySettings.BorderBotLeft);
             Tile botRightCorner = _grid[_grid.GetLength(0) - 1 , 0];
-            InstantiateBorder(botRightCorner.transform.position, _borderBotRight);
+            InstantiateBorder(botRightCorner.transform.position, _mySettings.BorderBotRight);
             Tile topRightCorner = _grid[_grid.GetLength(0) - 1,_grid.GetLength(1) - 1];
-            InstantiateBorder(topRightCorner.transform.position, _borderTopRight);
+            InstantiateBorder(topRightCorner.transform.position, _mySettings.BorderTopRight);
             Tile topLeftCorner = _grid[0, _grid.GetLength(1) - 1];
-            InstantiateBorder(topLeftCorner.transform.position, _borderTopLeft);
+            InstantiateBorder(topLeftCorner.transform.position, _mySettings.BorderTopLeft);
             
             for (int x = 0; x < _grid.GetLength(0); x++)
             {
                 Tile tileBot = _grid[x, 0];
                 Tile tileTop = _grid[x, _grid.GetLength(1) - 1];
                 
-                InstantiateBorder(tileBot.transform.position, _borderBot);
-                InstantiateBorder(tileTop.transform.position, _borderTop);
+                InstantiateBorder(tileBot.transform.position, _mySettings.BorderBot);
+                InstantiateBorder(tileTop.transform.position, _mySettings.BorderTop);
             }
             for (int y = 0; y < _grid.GetLength(1); y++)
             {
                 Tile tileLeft = _grid[0, y];
                 Tile tileRight = _grid[_grid.GetLength(0) - 1, y];
                 
-                InstantiateBorder(tileLeft.transform.position, _borderLeft);
-                InstantiateBorder(tileRight.transform.position, _borderRight);
+                InstantiateBorder(tileLeft.transform.position, _mySettings.BorderLeft);
+                InstantiateBorder(tileRight.transform.position, _mySettings.BorderRight);
             }
         }
 
@@ -185,6 +188,12 @@ namespace Components
 
             _gridBorders.Add(newBorder);
         }
+
+        private void  LoadSettings()
+        {
+            _mySettings = Resources.Load<ProjectSettings>(EnvVar.ProjectSettingsPath).GridManagerSettings;
+        }
+        
 #endif
     }
 }

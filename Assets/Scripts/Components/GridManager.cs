@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
@@ -6,9 +7,11 @@ using Events;
 using Extensions.DoTween;
 using Extensions.System;
 using Extensions.Unity;
+using Settings;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Zenject;
 using Sequence = DG.Tweening.Sequence;
 
@@ -16,6 +19,7 @@ namespace Components
 {
     public partial class GridManager : SerializedMonoBehaviour, ITweenContainerBind
     {
+        
         [Inject] private InputEvents InputEvents{get;set;}
         [Inject] private GridEvents GridEvents{get;set;}
         [BoxGroup(Order = 999)]
@@ -24,29 +28,17 @@ namespace Components
 #endif
         [OdinSerialize]
         private Tile[,] _grid;
-        [SerializeField] private List<GameObject> _tilePrefabs;
         [SerializeField] private int _gridSizeX;
         [SerializeField] private int _gridSizeY;
-        [SerializeField] private List<int> _prefabIds;
         [SerializeField] private Bounds _gridBounds;
         [SerializeField] private Transform _transform;
         [SerializeField] private List<GameObject> _tileBGs = new();
         [SerializeField] private List<GameObject> _gridBorders = new();
-        [SerializeField] private GameObject _tileBGPrefab;
         [SerializeField] private Transform _bGTrans;
-        [SerializeField] private GameObject _borderTopLeft; 
-        [SerializeField] private GameObject _borderTopRight; 
-        [SerializeField] private GameObject _borderBotLeft; 
-        [SerializeField] private GameObject _borderBotRight; 
-        [SerializeField] private GameObject _borderLeft; 
-        [SerializeField] private GameObject _borderRight; 
-        [SerializeField] private GameObject _borderTop; 
-        [SerializeField] private GameObject _borderBot;
         [SerializeField] private Transform _borderTrans;
         private Tile _selectedTile;
         private Vector3 _mouseDownPos;
         private Vector3 _mouseUpPos;
-        public ITweenContainer TweenContainer{get;set;}
         private List<MonoPool> _tilePoolsByPrefabID;
         private MonoPool _tilePool0;
         private MonoPool _tilePool1;
@@ -60,17 +52,23 @@ namespace Components
         private Coroutine _destroyRoutine;
         private Coroutine _hintRoutine;
         [SerializeField] private int _scoreMulti;
+        private Settings _mySettings;
+        public ITweenContainer TweenContainer{get;set;}
+        [Inject] private ProjectSettings ProjectSettings { get; set; }
+
         private void Awake()
         {
+            _mySettings = ProjectSettings.GridManagerSettings;
+            
             _tilePoolsByPrefabID = new List<MonoPool>();
             
-            for(int prefabId = 0; prefabId < _prefabIds.Count; prefabId ++)
+            for(int prefabId = 0; prefabId < _mySettings.PrefabIDs.Count; prefabId ++)
             {
                 MonoPool tilePool = new
                 (
                     new MonoPoolData
                     (
-                        _tilePrefabs[prefabId],
+                        _mySettings.TilePrefabs[prefabId],
                         10,
                         _transform
                     )
@@ -161,7 +159,9 @@ namespace Components
 
             }
 
-            matches = matches.Where(e => e.Count > 2).ToList();
+            const int matchIndex = 2;
+            
+            matches = matches.Where(e => e.Count > matchIndex).ToList();
 
             return matches.Count > 0;
         }
@@ -469,8 +469,9 @@ namespace Components
             if(_hintTile)
             {
                 Vector2Int gridMoveDir = _hintDir.ToVector();
+                Vector3 gridMoveEase = gridMoveDir.ToVector3XY() * 0.66f;
 
-                Vector3 moveCoords = _grid.CoordsToWorld(_transform, _hintTile.Coords + gridMoveDir);
+                Vector3 moveCoords = _grid.CoordsToWorld(_transform, _hintTile.Coords + gridMoveDir) - gridMoveEase;
                 
                 Tween hintTween = _hintTile.DoHint(moveCoords);
             }
@@ -566,5 +567,37 @@ namespace Components
             GridEvents.InputStart -= OnInputStart;
             GridEvents.InputStop -= OnInputStop;
         }
+        
+        [Serializable]
+        public class Settings
+        {
+            public List<GameObject> TilePrefabs => _tilePrefabs;
+            public List<int> PrefabIDs => _prefabIds;
+            public GameObject TileBGPrefab => _tileBgPrefab;
+            public GameObject BorderTopLeft => _borderTopLeft; 
+            public GameObject BorderTopRight => _borderTopRight; 
+            public GameObject BorderBotLeft => _borderBotLeft; 
+            public GameObject BorderBotRight => _borderBotRight; 
+            public GameObject BorderLeft => _borderLeft; 
+            public GameObject BorderRight => _borderRight; 
+            public GameObject BorderTop => _borderTop; 
+            public GameObject BorderBot => _borderBot; 
+            
+            
+            [SerializeField] private GameObject _tileBgPrefab;
+            [SerializeField] private List<int> _prefabIds;
+            [SerializeField] private List<GameObject> _tilePrefabs;
+            
+            [SerializeField] private GameObject _borderTopLeft; 
+            [SerializeField] private GameObject _borderTopRight; 
+            [SerializeField] private GameObject _borderBotLeft; 
+            [SerializeField] private GameObject _borderBotRight; 
+            [SerializeField] private GameObject _borderLeft; 
+            [SerializeField] private GameObject _borderRight; 
+            [SerializeField] private GameObject _borderTop; 
+            [SerializeField] private GameObject _borderBot;
+             
+        }
+
     }
 }
