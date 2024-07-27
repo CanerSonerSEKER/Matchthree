@@ -12,4 +12,5 @@ public static class EnvVar
     public const int HintSpriteLayer = 1; 
     public const int TileSpriteLayer = 0;
     public const int TileBGSpriteLayer = -1;
+    public const float totalTime = 90f;
 }

@@ -1,6 +1,5 @@
 using Events;
 using Settings;
-using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
@@ -13,13 +12,26 @@ namespace Installers
         private InputEvents _inputEvents;
         private GridEvents _gridEvents;
         private ProjectSettings _projectSettings;
-
+        private AudioEvents _audioEvents;
+        
+        
         public override void InstallBindings()
         {
+            SceneManager.sceneLoaded += OnSceneLoaded;
+            
             InstallEvents();
+            InstallPlayerData();
             InstallSettings();
         }
-
+        
+        //2
+        private void InstallPlayerData()
+        {
+            Container.BindInterfacesAndSelfTo<PlayerData>().AsSingle();
+        }
+        
+        //2
+        
         private void InstallSettings()
         {
             _projectSettings = Resources.Load<ProjectSettings>(EnvVar.ProjectSettingsPath);
@@ -27,7 +39,7 @@ namespace Installers
         }
 
         private void InstallEvents()
-        {
+        { 
             _projectEvents = new ProjectEvents();
             Container.BindInstance(_projectEvents).AsSingle();
             
@@ -36,7 +48,12 @@ namespace Installers
 
             _gridEvents = new GridEvents();
             Container.BindInstance(_gridEvents).AsSingle();
+
+            _audioEvents = new AudioEvents();
+            Container.BindInstance(_audioEvents).AsSingle();
         }
+        
+        
 
         private void Awake()
         {
@@ -45,6 +62,7 @@ namespace Installers
 
         public override void Start()
         {
+            
             _projectEvents.ProjectStarted?.Invoke();
         }
 
@@ -53,6 +71,12 @@ namespace Installers
         private void RegisterEvents()
         {
             SceneManager.sceneLoaded += OnSceneLoaded;
+            MainMenuEvents.NewGameBTN += OnNewGameBTN;
+        }
+
+        private void OnNewGameBTN()
+        {
+            LoadScene("Main");
         }
 
         private void OnSceneLoaded(Scene loadedScene, LoadSceneMode arg1)

@@ -11,7 +11,6 @@ using Settings;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Zenject;
 using Sequence = DG.Tweening.Sequence;
 
@@ -22,6 +21,7 @@ namespace Components
         
         [Inject] private InputEvents InputEvents{get;set;}
         [Inject] private GridEvents GridEvents{get;set;}
+        [Inject] private AudioEvents AudioEvents { get; set; }
         [BoxGroup(Order = 999)]
 #if UNITY_EDITOR
         [TableMatrix(SquareCells = true, DrawElementMethod = nameof(DrawTile))]
@@ -56,11 +56,24 @@ namespace Components
         public ITweenContainer TweenContainer{get;set;}
         [Inject] private ProjectSettings ProjectSettings { get; set; }
 
+        // 
+        private Dictionary<int, MonoPool> _powerupPoolsByPrefabID;
+
+        private const int horizontalPowerup = 2;
+        private const int verticalBombPowerup = 4;
+        private const int bombPowerup = 6;
+
+        private bool _horizontalPowerupPresent = false;
+        private bool _verticalPowerupPresent = false;
+        private bool _bombPowerupPresent = false;
+        
+        //
         private void Awake()
         {
             _mySettings = ProjectSettings.GridManagerSettings;
             
             _tilePoolsByPrefabID = new List<MonoPool>();
+            _powerupPoolsByPrefabID = new Dictionary<int, MonoPool>(); // 
             
             for(int prefabId = 0; prefabId < _mySettings.PrefabIDs.Count; prefabId ++)
             {
@@ -77,6 +90,20 @@ namespace Components
                 _tilePoolsByPrefabID.Add(tilePool);
             }
             
+            // 
+            for (int i = 0; i < _mySettings.PowerupPrefabsIDs.Count; i++)
+            {
+                int powerupId = _mySettings.TilePrefabs.Count + i;
+                MonoPool powerupPool = new MonoPool(
+                    new MonoPoolData(
+                        _mySettings.TilePowerupPrefabs[i],
+                        5,
+                        _transform
+                        )
+                );
+                _powerupPoolsByPrefabID.Add(powerupId, powerupPool);
+            }
+            //
             TweenContainer = TweenContain.Install(this);
         }
 
@@ -256,7 +283,6 @@ namespace Components
 
             return matches.Count == 0;
         }
- 
 
         private void SpawnAndAllocateTiles()
         {
@@ -284,13 +310,15 @@ namespace Components
                                 spawnStartY = thisCoord.y;
                             }
                         
-                            MonoPool randomPool = _tilePoolsByPrefabID.Random();
-                            Tile newTile = SpawnTile
+                            /*MonoPool randomPool = _tilePoolsByPrefabID.Random();*/
+
+                            Tile newTile = SpawnRegularOrPowerupTile(new Vector2Int(x, spawnPoint), thisCoord); // 
+                            /*Tile newTile = SpawnTile
                             (
                                 randomPool, 
                                 _grid.CoordsToWorld(_transform, new Vector2Int(x, spawnPoint)),
                                 thisCoord
-                            );
+                            );*/
                         
                             _tilesToMove[thisCoord.x, thisCoord.y] = newTile;
                             break;
@@ -401,7 +429,7 @@ namespace Components
             
             foreach (List<Tile> matches in _lastMatches)
             {
-                IntScoreMulti();
+                IntScoreMulti();    
                 matches.DoToAll(DespawnTile);
                 
                 // TODO: Show scoreMulti text in UI as PunchScale 
@@ -414,16 +442,45 @@ namespace Components
             SpawnAndAllocateTiles();
         }
         
-        private void DespawnTile(Tile e)
+        private void DespawnTile(Tile tile)
         {
-            _grid.Set(null, e.Coords);
-            _tilePoolsByPrefabID[e.ID].DeSpawn(e);
-        }
+            /*_grid.Set(null, e.Coords);
+            _tilePoolsByPrefabID[e.ID].DeSpawn(e); */
+            
+            // 
 
+            _grid.Set(null, tile.Coords);
+            AudioEvents.TileDestroyed?.Invoke();
+            
+            if (_mySettings.PowerupPrefabsIDs.Contains(tile.ID))
+            {
+                if (tile.ID == _mySettings.PowerupPrefabsIDs[0])
+                {
+                    _horizontalPowerupPresent = false;
+                }
+                else if (tile.ID == _mySettings.PowerupPrefabsIDs[1])
+                {
+                    _verticalPowerupPresent = false;
+                }
+                else if (tile.ID == _mySettings.PowerupPrefabsIDs[2])
+                {
+                    _bombPowerupPresent = false;
+                }
+                _powerupPoolsByPrefabID[tile.ID].DeSpawn(tile);
+                return; 
+            }
+
+            _tilePoolsByPrefabID[tile.ID].DeSpawn(tile);
+            // 
+        }
+        
         private void DoTileMoveAnim(Tile fromTile, Tile toTile, TweenCallback onComplete = null)
         {
             Vector3 fromTileWorldPos = _grid.CoordsToWorld(_transform, fromTile.Coords);
             fromTile.DoMove(fromTileWorldPos);
+            
+            AudioEvents.TileSlided?.Invoke(); // Sound
+            
             Vector3 toTileWorldPos = _grid.CoordsToWorld(_transform, toTile.Coords);
             toTile.DoMove(toTileWorldPos, onComplete);
         }
@@ -512,6 +569,49 @@ namespace Components
                 _hintTween.Complete();
             }
         }
+        
+        // 
+        private Tile SpawnRegularOrPowerupTile(Vector2Int spawnPoint, Vector2Int targetCoord)
+        {
+            if (ShouldSpawnPowerup(out int powerupId))
+            {
+                return SpawnTile(_powerupPoolsByPrefabID[powerupId], _grid.CoordsToWorld(_transform, spawnPoint), targetCoord);
+            }
+            else
+            {
+                MonoPool randomPool = _tilePoolsByPrefabID.Random();
+                return SpawnTile(randomPool, _grid.CoordsToWorld(_transform, spawnPoint), targetCoord);
+            }
+        }
+
+        private bool ShouldSpawnPowerup(out int powerupId)
+        {
+            powerupId = -1;
+            
+            if (_scoreMulti == horizontalPowerup + 1 && !_horizontalPowerupPresent)
+            {
+                powerupId = _mySettings.PowerupPrefabsIDs[0];
+                _horizontalPowerupPresent = true;
+                return true;
+            }
+            if (_scoreMulti == verticalBombPowerup + 1 && !_verticalPowerupPresent)
+            {
+                powerupId = _mySettings.PowerupPrefabsIDs[1];
+                _verticalPowerupPresent = true;
+                return true;
+            }
+            if (_scoreMulti == bombPowerup + 1 && !_bombPowerupPresent)
+            {
+                Debug.LogWarning($"ScoreMulti: {_scoreMulti}");
+
+                powerupId = _mySettings.PowerupPrefabsIDs[2];
+                _bombPowerupPresent = true;
+                return true;
+            } 
+            
+            return false;
+        }
+        //
 
         private void OnMouseUpGrid(Vector3 mouseUpPos)
         {
@@ -521,6 +621,20 @@ namespace Components
 
             if(_selectedTile)
             {
+                // 
+                if (IsPowerupTile(_selectedTile))
+                {
+                    ActivatePowerup(_selectedTile);
+                    return;
+                }
+
+                if (!HasAnyMatches(out _lastMatches))
+                {
+                    ResetScoreMulti();  
+                }
+                
+                //
+                
                 Vector2Int tileMoveCoord = _selectedTile.Coords + GridF.GetGridDirVector(dirVector);
 
                 if(! CanMove(tileMoveCoord)) return;
@@ -559,7 +673,76 @@ namespace Components
             }
         }
 
+        // 
+        private bool IsPowerupTile(Tile tile)
+        {
+            return _mySettings.PowerupPrefabsIDs.Contains(tile.ID);
+        }
 
+        private void ActivatePowerup(Tile powerupTile)
+        {
+            List<Tile> tilesToDestroy = new List<Tile>();
+
+            if (powerupTile.ID == _mySettings.PowerupPrefabsIDs[0])
+            {
+                for (int x = 0; x < _gridSizeX; x++)
+                {
+                    tilesToDestroy.Add(_grid[x, powerupTile.Coords.y]);
+                }
+                _horizontalPowerupPresent = false;
+            }
+            else if (powerupTile.ID == _mySettings.PowerupPrefabsIDs[1])
+            {
+                for (int y = 0; y < _gridSizeY; y++)
+                {
+                    tilesToDestroy.Add(_grid[powerupTile.Coords.x, y]);
+                }
+
+                _verticalPowerupPresent = false;
+            }
+            else if(powerupTile.ID == _mySettings.PowerupPrefabsIDs[2])
+            {
+                Vector2Int[] adjacentDirection = new Vector2Int[]
+                {
+                    Vector2Int.up, Vector2Int.down, Vector2Int.left, Vector2Int.right,
+                    new Vector2Int(1, 1), new Vector2Int(1, -1), new Vector2Int(-1, 1), new Vector2Int(-1, -1)
+                };
+
+                foreach (Vector2Int dir in adjacentDirection)
+                {
+                    Vector2Int adjacentCoord = powerupTile.Coords + dir;
+                    if (_grid.IsInsideGrid(adjacentCoord))
+                    {
+                        tilesToDestroy.Add(_grid[adjacentCoord.x, adjacentCoord.y]);   
+                    }
+                }
+                AudioEvents.TileBombed?.Invoke(); // Sound 
+                _bombPowerupPresent = false;
+            }
+
+            foreach (Tile tile in tilesToDestroy)
+            {
+                DespawnTile(tile);
+            }
+            DespawnTile(powerupTile);
+            
+            GridEvents.MatchGroupDespawn?.Invoke(tilesToDestroy.Count * _scoreMulti);
+
+            if (powerupTile.ID == _mySettings.PowerupPrefabsIDs[0]) _horizontalPowerupPresent = false;
+            else if (powerupTile.ID == _mySettings.PowerupPrefabsIDs[1]) _verticalPowerupPresent = false;
+            else if (powerupTile.ID == _mySettings.PowerupPrefabsIDs[2]) _bombPowerupPresent = false;
+
+            _scoreMulti = 1;
+            int score = tilesToDestroy.Count * _scoreMulti;
+            GridEvents.MatchGroupDespawn?.Invoke(score);
+
+            SpawnAndAllocateTiles();
+            
+        }
+        
+        // 
+        
+        
         private void UnRegisterEvents()
         {
             InputEvents.MouseDownGrid -= OnMouseDownGrid;
@@ -581,9 +764,16 @@ namespace Components
             public GameObject BorderLeft => _borderLeft; 
             public GameObject BorderRight => _borderRight; 
             public GameObject BorderTop => _borderTop; 
-            public GameObject BorderBot => _borderBot; 
+            public GameObject BorderBot => _borderBot;
             
+            //
+            public List<GameObject> TilePowerupPrefabs => _tilePowerupPrefabs;
+            public List<int> PowerupPrefabsIDs => _powerupPrefabIDs;            
             
+            [SerializeField] private List<GameObject> _tilePowerupPrefabs;
+            [SerializeField] private List<int> _powerupPrefabIDs;
+            //
+                        
             [SerializeField] private GameObject _tileBgPrefab;
             [SerializeField] private List<int> _prefabIds;
             [SerializeField] private List<GameObject> _tilePrefabs;

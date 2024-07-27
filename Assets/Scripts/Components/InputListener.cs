@@ -4,6 +4,7 @@ using Extensions.Unity;
 using Extensions.Unity.MonoHelper;
 using UnityEngine;
 using Zenject;
+using EventListenerMono = Utils.EventListenerMono;
 
 namespace Components
 {

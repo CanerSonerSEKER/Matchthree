@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: ProjectSettings
   m_EditorClassIdentifier: 
   _gridManagerSettings:
+    _tilePowerupPrefabs:
+    - {fileID: 1497014512057067834, guid: 28f9dbdff4ec28149bbd557e885bfdcd, type: 3}
+    - {fileID: 5904290649079128055, guid: c2876434f37a1b6468863fdb46b40c09, type: 3}
+    - {fileID: 7877053213246890272, guid: e11450e9302c8fe4fa960c18455de1c3, type: 3}
+    _powerupPrefabIDs: 040000000500000006000000
     _tileBgPrefab: {fileID: 4447265001434122266, guid: 3a2b2bb446b93b64a9a46b0884569dcb, type: 3}
     _prefabIds: 00000000010000000200000003000000
     _tilePrefabs:

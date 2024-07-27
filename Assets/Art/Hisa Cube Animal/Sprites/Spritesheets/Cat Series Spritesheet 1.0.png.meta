@@ -1,0 +1,1715 @@
+fileFormatVersion: 2
+guid: 1bf8c2c813412654c8a43854235ab517
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1432517323402608352
+    second: Cat Series Spritesheet 1.0_0
+  - first:
+      213: -5212296236386218964
+    second: Cat Series Spritesheet 1.0_1
+  - first:
+      213: -7133714486296647706
+    second: Cat Series Spritesheet 1.0_2
+  - first:
+      213: 2633221293296553779
+    second: Cat Series Spritesheet 1.0_3
+  - first:
+      213: -6656392042811883131
+    second: Cat Series Spritesheet 1.0_4
+  - first:
+      213: 8310218341065167230
+    second: Cat Series Spritesheet 1.0_5
+  - first:
+      213: -4192116766372077834
+    second: Cat Series Spritesheet 1.0_6
+  - first:
+      213: 8533536473616970865
+    second: Cat Series Spritesheet 1.0_7
+  - first:
+      213: -1572935675524923182
+    second: Cat Series Spritesheet 1.0_8
+  - first:
+      213: 2907408495246086647
+    second: Cat Series Spritesheet 1.0_9
+  - first:
+      213: -5855543119618519307
+    second: Cat Series Spritesheet 1.0_10
+  - first:
+      213: -7030064065763935736
+    second: Cat Series Spritesheet 1.0_11
+  - first:
+      213: -709734931316942407
+    second: Cat Series Spritesheet 1.0_12
+  - first:
+      213: 5366302395674747695
+    second: Cat Series Spritesheet 1.0_13
+  - first:
+      213: 8116377283449280240
+    second: Cat Series Spritesheet 1.0_14
+  - first:
+      213: -526064850279886523
+    second: Cat Series Spritesheet 1.0_15
+  - first:
+      213: -668500664856312875
+    second: Cat Series Spritesheet 1.0_16
+  - first:
+      213: 6366828020249126900
+    second: Cat Series Spritesheet 1.0_17
+  - first:
+      213: 5596192103012041062
+    second: Cat Series Spritesheet 1.0_18
+  - first:
+      213: 9046930776381716971
+    second: Cat Series Spritesheet 1.0_19
+  - first:
+      213: 321156690517326462
+    second: Cat Series Spritesheet 1.0_20
+  - first:
+      213: -847801758290809583
+    second: Cat Series Spritesheet 1.0_21
+  - first:
+      213: 8139084091461582594
+    second: Cat Series Spritesheet 1.0_22
+  - first:
+      213: 3432379277700312101
+    second: Cat Series Spritesheet 1.0_23
+  - first:
+      213: 1703813368920553088
+    second: Cat Series Spritesheet 1.0_24
+  - first:
+      213: -6973358308934031979
+    second: Cat Series Spritesheet 1.0_25
+  - first:
+      213: 8498382883172314609
+    second: Cat Series Spritesheet 1.0_26
+  - first:
+      213: -7442846131078289173
+    second: Cat Series Spritesheet 1.0_27
+  - first:
+      213: 8727661168330318052
+    second: Cat Series Spritesheet 1.0_28
+  - first:
+      213: 6849914913034857549
+    second: Cat Series Spritesheet 1.0_29
+  - first:
+      213: -942940672520576147
+    second: Cat Series Spritesheet 1.0_30
+  - first:
+      213: -7370166663965796083
+    second: Cat Series Spritesheet 1.0_31
+  - first:
+      213: -3510031166819313659
+    second: Cat Series Spritesheet 1.0_32
+  - first:
+      213: -3453433456120903450
+    second: Cat Series Spritesheet 1.0_33
+  - first:
+      213: 2179238511047927614
+    second: Cat Series Spritesheet 1.0_34
+  - first:
+      213: -8495366368991471560
+    second: Cat Series Spritesheet 1.0_35
+  - first:
+      213: 3008909056920919088
+    second: Cat Series Spritesheet 1.0_36
+  - first:
+      213: 1148843882693597730
+    second: Cat Series Spritesheet 1.0_37
+  - first:
+      213: -6129154718251951891
+    second: Cat Series Spritesheet 1.0_38
+  - first:
+      213: -8051972180054549587
+    second: Cat Series Spritesheet 1.0_39
+  - first:
+      213: -4481950867292990601
+    second: Cat Series Spritesheet 1.0_40
+  - first:
+      213: -6922630605576418627
+    second: Cat Series Spritesheet 1.0_41
+  - first:
+      213: -7861094710693098515
+    second: Cat Series Spritesheet 1.0_42
+  - first:
+      213: -7573413868132796889
+    second: Cat Series Spritesheet 1.0_43
+  - first:
+      213: -3336246569339538826
+    second: Cat Series Spritesheet 1.0_44
+  - first:
+      213: 8130751276282139890
+    second: Cat Series Spritesheet 1.0_45
+  - first:
+      213: 2325529297544394103
+    second: Cat Series Spritesheet 1.0_46
+  - first:
+      213: -6079011231821211467
+    second: Cat Series Spritesheet 1.0_47
+  - first:
+      213: -199522891657225244
+    second: Cat Series Spritesheet 1.0_48
+  - first:
+      213: -5073190679466741489
+    second: Cat Series Spritesheet 1.0_49
+  - first:
+      213: 448718599240155527
+    second: Cat Series Spritesheet 1.0_50
+  - first:
+      213: -5348957526558017290
+    second: Cat Series Spritesheet 1.0_51
+  - first:
+      213: 4041082369497884272
+    second: Cat Series Spritesheet 1.0_52
+  - first:
+      213: 4077837523350262020
+    second: Cat Series Spritesheet 1.0_53
+  - first:
+      213: -1441222294630531370
+    second: Cat Series Spritesheet 1.0_54
+  - first:
+      213: -3650548619990487800
+    second: Cat Series Spritesheet 1.0_55
+  - first:
+      213: 3485533390640755442
+    second: Cat Series Spritesheet 1.0_56
+  - first:
+      213: 3863458951058147230
+    second: Cat Series Spritesheet 1.0_57
+  - first:
+      213: -69916666363701885
+    second: Cat Series Spritesheet 1.0_58
+  - first:
+      213: 4269299586880880395
+    second: Cat Series Spritesheet 1.0_59
+  - first:
+      213: -5067221194927814634
+    second: Cat Series Spritesheet 1.0_60
+  - first:
+      213: 7828934544309668668
+    second: Cat Series Spritesheet 1.0_61
+  - first:
+      213: -8887158337374071168
+    second: Cat Series Spritesheet 1.0_62
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3699
+        width: 393
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0218efb851dae1ce0800000000000000
+      internalID: -1432517323402608352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_1
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 3699
+        width: 397
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2c081e50343aa7b0800000000000000
+      internalID: -5212296236386218964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_2
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 3699
+        width: 396
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e7ea338874fffc90800000000000000
+      internalID: -7133714486296647706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_3
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 3699
+        width: 395
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33f8fe990d41b8420800000000000000
+      internalID: 2633221293296553779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_4
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 3699
+        width: 396
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 581067244bebf93a0800000000000000
+      internalID: -6656392042811883131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_5
+      rect:
+        serializedVersion: 2
+        x: 2225
+        y: 3699
+        width: 395
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7110214d83d35370800000000000000
+      internalID: 8310218341065167230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_6
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 3699
+        width: 393
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fede63030c92d5c0800000000000000
+      internalID: -4192116766372077834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3220
+        width: 393
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17477cbc5363d6670800000000000000
+      internalID: 8533536473616970865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_8
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 3220
+        width: 397
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d04ccd365fcb2ae0800000000000000
+      internalID: -1572935675524923182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_9
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 3220
+        width: 396
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f198105f90395820800000000000000
+      internalID: 2907408495246086647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_10
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 3220
+        width: 395
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fec7248e8eecbea0800000000000000
+      internalID: -5855543119618519307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_11
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 3220
+        width: 396
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80af6e3aaf1307e90800000000000000
+      internalID: -7030064065763935736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_12
+      rect:
+        serializedVersion: 2
+        x: 2225
+        y: 3220
+        width: 395
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b9da2e17d38626f0800000000000000
+      internalID: -709734931316942407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_13
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 3220
+        width: 393
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f236583d89fe87a40800000000000000
+      internalID: 5366302395674747695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2750
+        width: 393
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f65b0b032a23a070800000000000000
+      internalID: 8116377283449280240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_15
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 2750
+        width: 397
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5419f3e4eca03b8f0800000000000000
+      internalID: -526064850279886523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_16
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 2750
+        width: 396
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d3802bef2209b6f0800000000000000
+      internalID: -668500664856312875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_17
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 2750
+        width: 397
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f7e3fcf9548b5850800000000000000
+      internalID: 6366828020249126900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_18
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 2750
+        width: 396
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66101ea511ba9ad40800000000000000
+      internalID: 5596192103012041062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_19
+      rect:
+        serializedVersion: 2
+        x: 2225
+        y: 2750
+        width: 395
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be9f7c1cb972d8d70800000000000000
+      internalID: 9046930776381716971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_20
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 2750
+        width: 393
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7a7687fe4af47400800000000000000
+      internalID: 321156690517326462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2281
+        width: 393
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11def1deac00c34f0800000000000000
+      internalID: -847801758290809583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_22
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 2281
+        width: 397
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20fb994cbd5d3f070800000000000000
+      internalID: 8139084091461582594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_23
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 2281
+        width: 396
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52c2dbd74c242af20800000000000000
+      internalID: 3432379277700312101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_24
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 2281
+        width: 397
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 086321a5b3925a710800000000000000
+      internalID: 1703813368920553088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_25
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 2281
+        width: 396
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 595e7708097a93f90800000000000000
+      internalID: -6973358308934031979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_26
+      rect:
+        serializedVersion: 2
+        x: 2225
+        y: 2281
+        width: 395
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fdeeb4b43250f570800000000000000
+      internalID: 8498382883172314609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_27
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 2281
+        width: 393
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be8203fa0e2b5b890800000000000000
+      internalID: -7442846131078289173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_28
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1833
+        width: 393
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e0ac4a6791ee1970800000000000000
+      internalID: 8727661168330318052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_29
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 1833
+        width: 396
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4ce71d2259cf0f50800000000000000
+      internalID: 6849914913034857549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_30
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1833
+        width: 396
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d63a42a44700ae2f0800000000000000
+      internalID: -942940672520576147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_31
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 1833
+        width: 397
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0994eac778e7b990800000000000000
+      internalID: -7370166663965796083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_32
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 1833
+        width: 396
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5085f2f204dd94fc0800000000000000
+      internalID: -3510031166819313659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_33
+      rect:
+        serializedVersion: 2
+        x: 2225
+        y: 1833
+        width: 395
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e8c6789190f210d0800000000000000
+      internalID: -3453433456120903450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_34
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 1833
+        width: 393
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e37ecd331e53e3e10800000000000000
+      internalID: 2179238511047927614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_35
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1390
+        width: 393
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 838967b3c456a1a80800000000000000
+      internalID: -8495366368991471560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_36
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 1390
+        width: 395
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c1a3b68dac1c920800000000000000
+      internalID: 3008909056920919088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_37
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1390
+        width: 396
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22a155aac6381ff00800000000000000
+      internalID: 1148843882693597730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_38
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 1390
+        width: 395
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de8de25e14ed0faa0800000000000000
+      internalID: -6129154718251951891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_39
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 1390
+        width: 396
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dab5582a6f5a14090800000000000000
+      internalID: -8051972180054549587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_40
+      rect:
+        serializedVersion: 2
+        x: 2225
+        y: 1392
+        width: 395
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7735f3ebe69ecc1c0800000000000000
+      internalID: -4481950867292990601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_41
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 1390
+        width: 393
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbace535420edef90800000000000000
+      internalID: -6922630605576418627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 928
+        width: 393
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: deb8f6fa208c7e290800000000000000
+      internalID: -7861094710693098515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_43
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 928
+        width: 397
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7267dec6634d5e690800000000000000
+      internalID: -7573413868132796889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_44
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 928
+        width: 396
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 672b66fdb6543b1d0800000000000000
+      internalID: -3336246569339538826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_45
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 928
+        width: 397
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f4d9db053b36d070800000000000000
+      internalID: 8130751276282139890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_46
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 928
+        width: 396
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 775b5ee2390f54020800000000000000
+      internalID: 2325529297544394103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_47
+      rect:
+        serializedVersion: 2
+        x: 2225
+        y: 928
+        width: 395
+        height: 396
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b8dfad1e7303aba0800000000000000
+      internalID: -6079011231821211467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_48
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 928
+        width: 393
+        height: 394
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eb5636bcf62b3df0800000000000000
+      internalID: -199522891657225244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_49
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 465
+        width: 393
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f01ff88b4f76899b0800000000000000
+      internalID: -5073190679466741489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_50
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 465
+        width: 397
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78102d7403b2a3600800000000000000
+      internalID: 448718599240155527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_51
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 465
+        width: 396
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f87bd6387fa4c5b0800000000000000
+      internalID: -5348957526558017290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_52
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 465
+        width: 397
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 076e306210fc41830800000000000000
+      internalID: 4041082369497884272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_53
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 463
+        width: 396
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4011d074f93679830800000000000000
+      internalID: 4077837523350262020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_54
+      rect:
+        serializedVersion: 2
+        x: 2225
+        y: 463
+        width: 395
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6de7c2e75ffbffbe0800000000000000
+      internalID: -1441222294630531370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_55
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 463
+        width: 393
+        height: 395
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80dac2e1f55a65dc0800000000000000
+      internalID: -3650548619990487800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_56
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 393
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f2b7e1d62a1f5030800000000000000
+      internalID: 3485533390640755442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_57
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 0
+        width: 397
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e97cf1e4273cd9530800000000000000
+      internalID: 3863458951058147230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_58
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 0
+        width: 396
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3851381992b970ff0800000000000000
+      internalID: -69916666363701885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_59
+      rect:
+        serializedVersion: 2
+        x: 1342
+        y: 0
+        width: 396
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0fb1c3ca599f3b30800000000000000
+      internalID: 4269299586880880395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_60
+      rect:
+        serializedVersion: 2
+        x: 1785
+        y: 0
+        width: 396
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6184ff5ab2d9da9b0800000000000000
+      internalID: -5067221194927814634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_61
+      rect:
+        serializedVersion: 2
+        x: 2225
+        y: 0
+        width: 395
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3bcc531d76f5ac60800000000000000
+      internalID: 7828934544309668668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cat Series Spritesheet 1.0_62
+      rect:
+        serializedVersion: 2
+        x: 2662
+        y: 0
+        width: 393
+        height: 393
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 086da2e04987aa480800000000000000
+      internalID: -8887158337374071168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 80146da190d94a24784f651d981c63d7
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Cat Series Spritesheet 1.0_0: -1432517323402608352
+      Cat Series Spritesheet 1.0_1: -5212296236386218964
+      Cat Series Spritesheet 1.0_10: -5855543119618519307
+      Cat Series Spritesheet 1.0_11: -7030064065763935736
+      Cat Series Spritesheet 1.0_12: -709734931316942407
+      Cat Series Spritesheet 1.0_13: 5366302395674747695
+      Cat Series Spritesheet 1.0_14: 8116377283449280240
+      Cat Series Spritesheet 1.0_15: -526064850279886523
+      Cat Series Spritesheet 1.0_16: -668500664856312875
+      Cat Series Spritesheet 1.0_17: 6366828020249126900
+      Cat Series Spritesheet 1.0_18: 5596192103012041062
+      Cat Series Spritesheet 1.0_19: 9046930776381716971
+      Cat Series Spritesheet 1.0_2: -7133714486296647706
+      Cat Series Spritesheet 1.0_20: 321156690517326462
+      Cat Series Spritesheet 1.0_21: -847801758290809583
+      Cat Series Spritesheet 1.0_22: 8139084091461582594
+      Cat Series Spritesheet 1.0_23: 3432379277700312101
+      Cat Series Spritesheet 1.0_24: 1703813368920553088
+      Cat Series Spritesheet 1.0_25: -6973358308934031979
+      Cat Series Spritesheet 1.0_26: 8498382883172314609
+      Cat Series Spritesheet 1.0_27: -7442846131078289173
+      Cat Series Spritesheet 1.0_28: 8727661168330318052
+      Cat Series Spritesheet 1.0_29: 6849914913034857549
+      Cat Series Spritesheet 1.0_3: 2633221293296553779
+      Cat Series Spritesheet 1.0_30: -942940672520576147
+      Cat Series Spritesheet 1.0_31: -7370166663965796083
+      Cat Series Spritesheet 1.0_32: -3510031166819313659
+      Cat Series Spritesheet 1.0_33: -3453433456120903450
+      Cat Series Spritesheet 1.0_34: 2179238511047927614
+      Cat Series Spritesheet 1.0_35: -8495366368991471560
+      Cat Series Spritesheet 1.0_36: 3008909056920919088
+      Cat Series Spritesheet 1.0_37: 1148843882693597730
+      Cat Series Spritesheet 1.0_38: -6129154718251951891
+      Cat Series Spritesheet 1.0_39: -8051972180054549587
+      Cat Series Spritesheet 1.0_4: -6656392042811883131
+      Cat Series Spritesheet 1.0_40: -4481950867292990601
+      Cat Series Spritesheet 1.0_41: -6922630605576418627
+      Cat Series Spritesheet 1.0_42: -7861094710693098515
+      Cat Series Spritesheet 1.0_43: -7573413868132796889
+      Cat Series Spritesheet 1.0_44: -3336246569339538826
+      Cat Series Spritesheet 1.0_45: 8130751276282139890
+      Cat Series Spritesheet 1.0_46: 2325529297544394103
+      Cat Series Spritesheet 1.0_47: -6079011231821211467
+      Cat Series Spritesheet 1.0_48: -199522891657225244
+      Cat Series Spritesheet 1.0_49: -5073190679466741489
+      Cat Series Spritesheet 1.0_5: 8310218341065167230
+      Cat Series Spritesheet 1.0_50: 448718599240155527
+      Cat Series Spritesheet 1.0_51: -5348957526558017290
+      Cat Series Spritesheet 1.0_52: 4041082369497884272
+      Cat Series Spritesheet 1.0_53: 4077837523350262020
+      Cat Series Spritesheet 1.0_54: -1441222294630531370
+      Cat Series Spritesheet 1.0_55: -3650548619990487800
+      Cat Series Spritesheet 1.0_56: 3485533390640755442
+      Cat Series Spritesheet 1.0_57: 3863458951058147230
+      Cat Series Spritesheet 1.0_58: -69916666363701885
+      Cat Series Spritesheet 1.0_59: 4269299586880880395
+      Cat Series Spritesheet 1.0_6: -4192116766372077834
+      Cat Series Spritesheet 1.0_60: -5067221194927814634
+      Cat Series Spritesheet 1.0_61: 7828934544309668668
+      Cat Series Spritesheet 1.0_62: -8887158337374071168
+      Cat Series Spritesheet 1.0_7: 8533536473616970865
+      Cat Series Spritesheet 1.0_8: -1572935675524923182
+      Cat Series Spritesheet 1.0_9: 2907408495246086647
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,7 +1,10 @@
+using System;
 using DG.Tweening;
 using Events;
 using Extensions.DoTween;
 using Extensions.Unity.MonoHelper;
+using TMPro;
+using UnityEngine;
 using Zenject;
 
 namespace Components.UI
@@ -14,9 +17,37 @@ namespace Components.UI
         private int _currCounterVal;
         private int _playerScore;
 
+        [SerializeField] private TextMeshProUGUI highScoreText;
+        
+        [SerializeField] private TextMeshProUGUI timerText;
+        private float _totalTime;
+
         private void Awake()
         {
             TweenContainer = TweenContain.Install(this);
+            UpdateHighScoreText();
+        }
+
+        private void Update()
+        {
+            _totalTime = EnvVar.totalTime;
+            
+            if (_totalTime > 0)
+            {
+                _totalTime -= Time.deltaTime;
+
+                float minutes = Mathf.FloorToInt(_totalTime / 60);
+
+                float seconds = Mathf.FloorToInt(_totalTime % 60);
+
+                timerText.text = string.Format("Time : {0:00}:{1:00}", minutes, seconds);
+            }
+            else
+            {
+                Debug.LogWarning($"Time's up!");
+                _totalTime = 0;
+                // GameOver fonksiyonu gibi bir şeyler.
+            }
         }
 
         protected override void RegisterEvents()
@@ -36,8 +67,17 @@ namespace Components.UI
                 1f,
                 OnCounterUpdate
             );
-
             TweenContainer.AddTween = _counterTween;
+            CheckHighScore();
+        }
+
+        private void CheckHighScore()
+        {
+            if (_playerScore > PlayerPrefs.GetInt("HighScore", 0))
+            {
+                PlayerPrefs.SetInt("HighScore", _playerScore);
+            }
+            UpdateHighScoreText();
         }
 
         private void OnCounterUpdate(int val)
@@ -49,6 +89,11 @@ namespace Components.UI
         protected override void UnRegisterEvents()
         {
             GridEvents.MatchGroupDespawn -= OnMatchGroupDespawn;
+        }
+
+        void UpdateHighScoreText()
+        {
+            highScoreText.text = $"HighScore: {PlayerPrefs.GetInt("HighScore", 0)}";
         }
 
     }
