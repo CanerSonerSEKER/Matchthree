@@ -20,7 +20,7 @@ namespace Components.UI
         [SerializeField] private TextMeshProUGUI highScoreText;
         
         [SerializeField] private TextMeshProUGUI timerText;
-        private float _totalTime;
+        private float _totalTime = 90f;
 
         private void Awake()
         {
@@ -30,8 +30,6 @@ namespace Components.UI
 
         private void Update()
         {
-            _totalTime = EnvVar.totalTime;
-            
             if (_totalTime > 0)
             {
                 _totalTime -= Time.deltaTime;
@@ -40,7 +38,7 @@ namespace Components.UI
 
                 float seconds = Mathf.FloorToInt(_totalTime % 60);
 
-                timerText.text = string.Format("Time : {0:00}:{1:00}", minutes, seconds);
+                timerText.text = $"Time : {minutes:00}:{seconds:00}";
             }
             else
             {
@@ -57,6 +55,7 @@ namespace Components.UI
 
         private void OnMatchGroupDespawn(int arg0)
         {
+            _totalTime += EnvVar.IncreaseTime;
             _playerScore += arg0;
 
             if (_counterTween.IsActive()) _counterTween.Kill();
@@ -68,6 +67,7 @@ namespace Components.UI
                 OnCounterUpdate
             );
             TweenContainer.AddTween = _counterTween;
+
             CheckHighScore();
         }
 
@@ -77,6 +77,7 @@ namespace Components.UI
             {
                 PlayerPrefs.SetInt("HighScore", _playerScore);
             }
+            
             UpdateHighScoreText();
         }
 
@@ -91,8 +92,18 @@ namespace Components.UI
             GridEvents.MatchGroupDespawn -= OnMatchGroupDespawn;
         }
 
-        void UpdateHighScoreText()
+        private void UpdateHighScoreText()
         {
+            if (_counterTween.IsActive()) _counterTween.Kill();
+            
+            _counterTween = DOVirtual.Int
+            (_currCounterVal,
+                _playerScore,
+                1f,
+                OnCounterUpdate
+            );
+            TweenContainer.AddTween = _counterTween;
+            
             highScoreText.text = $"HighScore: {PlayerPrefs.GetInt("HighScore", 0)}";
         }
 
