@@ -52,8 +52,6 @@ namespace Installers
             _audioEvents = new AudioEvents();
             Container.BindInstance(_audioEvents).AsSingle();
         }
-        
-        
 
         private void Awake()
         {
@@ -62,7 +60,6 @@ namespace Installers
 
         public override void Start()
         {
-            
             _projectEvents.ProjectStarted?.Invoke();
         }
 

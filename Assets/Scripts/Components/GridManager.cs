@@ -689,6 +689,8 @@ namespace Components
                 {
                     tilesToDestroy.Add(_grid[x, powerupTile.Coords.y]);
                 }
+                GridEvents.HorizontalPowerupTimeIncrease.Invoke();
+                
                 _horizontalPowerupPresent = false;
             }
             else if (powerupTile.ID == _mySettings.PowerupPrefabsIDs[1])
@@ -697,7 +699,8 @@ namespace Components
                 {
                     tilesToDestroy.Add(_grid[powerupTile.Coords.x, y]);
                 }
-
+                GridEvents.VerticalPowerupTimeIncrease.Invoke();
+                
                 _verticalPowerupPresent = false;
             }
             else if(powerupTile.ID == _mySettings.PowerupPrefabsIDs[2])
@@ -717,6 +720,7 @@ namespace Components
                     }
                 }
                 AudioEvents.TileBombed?.Invoke(); // Sound 
+                GridEvents.BombPowerupTimeIncrease.Invoke();
                 _bombPowerupPresent = false;
             }
 
@@ -739,9 +743,8 @@ namespace Components
             SpawnAndAllocateTiles();
             
         }
-        
+
         // 
-        
         
         private void UnRegisterEvents()
         {

@@ -11,7 +11,7 @@ namespace Components.UI
 {
     public class PlayerScoreTMP : UITMP, ITweenContainerBind
     {
-        [Inject] private GridEvents GridEvents {get; set; }
+        [Inject] private GridEvents GridEvents { get; set; }
         public ITweenContainer TweenContainer { get; set; }
         private Tween _counterTween;
         private int _currCounterVal;
@@ -20,8 +20,9 @@ namespace Components.UI
         [SerializeField] private TextMeshProUGUI highScoreText;
         
         [SerializeField] private TextMeshProUGUI timerText;
-        private float _totalTime = 90f;
-
+        private float _totalTime = 90f;        
+       
+        
         private void Awake()
         {
             TweenContainer = TweenContain.Install(this);
@@ -51,11 +52,14 @@ namespace Components.UI
         protected override void RegisterEvents()
         {
             GridEvents.MatchGroupDespawn += OnMatchGroupDespawn;
+            GridEvents.TotalTimeIncrease += OnTotalTimeIncrease;
+            GridEvents.BombPowerupTimeIncrease += BombPowerupTimeIncrease;
+            GridEvents.VerticalPowerupTimeIncrease += VerticalPowerupTimeIncrease;
+            GridEvents.HorizontalPowerupTimeIncrease += HorizontalPowerupTimeIncrease;
         }
 
         private void OnMatchGroupDespawn(int arg0)
         {
-            _totalTime += EnvVar.IncreaseTime;
             _playerScore += arg0;
 
             if (_counterTween.IsActive()) _counterTween.Kill();
@@ -90,6 +94,10 @@ namespace Components.UI
         protected override void UnRegisterEvents()
         {
             GridEvents.MatchGroupDespawn -= OnMatchGroupDespawn;
+            GridEvents.TotalTimeIncrease -= OnTotalTimeIncrease;
+            GridEvents.BombPowerupTimeIncrease -= BombPowerupTimeIncrease;
+            GridEvents.VerticalPowerupTimeIncrease -= VerticalPowerupTimeIncrease;
+            GridEvents.HorizontalPowerupTimeIncrease -= HorizontalPowerupTimeIncrease;
         }
 
         private void UpdateHighScoreText()
@@ -106,6 +114,27 @@ namespace Components.UI
             
             highScoreText.text = $"HighScore: {PlayerPrefs.GetInt("HighScore", 0)}";
         }
+        
+        private void OnTotalTimeIncrease()
+        {
+            _totalTime += EnvVar.IncreaseTime;
+        }
+        
+        private void HorizontalPowerupTimeIncrease()
+        {
+            _totalTime += EnvVar.IncreaseTime * 3f;
+        }
+
+        private void VerticalPowerupTimeIncrease()
+        {
+            _totalTime += EnvVar.IncreaseTime * 3f;
+        }
+
+        private void BombPowerupTimeIncrease()
+        {
+            _totalTime += EnvVar.IncreaseTime * 5f;
+        }
+
 
     }
 }
